@@ -29,10 +29,10 @@ jobs:
 
       # Step 5: Commit and push the generated CSV file if there are changes
       - name: Commit and push changes
-        run:          
-          git clone https://github.com/alirezax2/dumpcsvfileonschedule
-          mv tiprank/* ./dumpcsvfileonschedule
-          cd dumpcsvfileonschedule
-          git add .
-          git commit -m "Automated CSV update" -a echo "No changes to commit"
-          git push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          directory: .
+          force: true
+      
