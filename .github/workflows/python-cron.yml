@@ -21,4 +21,4 @@ jobs:
       run: pip install pandas
 
     - name: Run Python script
-      run: dumpcsv.py
+      run: python dumpcsv.py
