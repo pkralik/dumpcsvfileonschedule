@@ -29,8 +29,7 @@ jobs:
 
       # Step 5: Commit and push the generated CSV file if there are changes
       - name: Commit and push changes
-        run:          git config --global user.email 'alireza.naziri@gmail.com'
-          git config --global user.name 'alirezax2'
+        run:          
           git clone https://github.com/alirezax2/dumpcsvfileonschedule
           mv tiprank/* ./dumpcsvfileonschedule
           cd dumpcsvfileonschedule
