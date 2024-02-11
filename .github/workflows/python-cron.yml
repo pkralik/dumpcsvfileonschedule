@@ -24,7 +24,7 @@ jobs:
       run: python dumpcsv.py
         git config --global user.email "alireza.naziri@gmail.com"
         git config --global user.name "alirezax2"
-        git add tiprank/random_data.csv
+        git add .
         git commit -m "Add random_data.csv via GitHub Action"
         git push
     # - name: Commit and Push Changes
