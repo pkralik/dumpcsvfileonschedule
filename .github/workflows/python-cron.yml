@@ -2,7 +2,7 @@ name: Run Python Script Every 1 Minute
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   build:
