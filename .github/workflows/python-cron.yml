@@ -1,36 +1,36 @@
-name: Run Python Script Every 1 Minute
+name: Generate and Commit CSV
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # Runs at every minute
+    - cron: '*/1 * * * *'
 
 jobs:
-  build:
+  generate-and-commit-csv:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.10'
+      # Step 2: Setup Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Install the Python version needed
 
-    - name: Install dependencies
-      run: pip install pandas
+      # Step 3: Install dependencies
+      - name: Install pandas
+        run: pip install pandas
 
-    - name: Run Python script
-      run: python dumpcsv.py
-        git config --global user.email "alireza.naziri@gmail.com"
-        git config --global user.name "alirezax2"
-        git add .
-        git commit -m "Add random_data.csv via GitHub Action"
-        git push
-    # - name: Commit and Push Changes
-    #   uses: stefanzweifel/git-auto-commit-action@v4
-    #   with:
-    #     commit_message: "Generate CSV file"
-    #     branch: ${{ github.ref }}
-    #     commit_user_name: GitHub Actions
-    #     commit_user_email: actions@users.noreply.github.com
+      # Step 4: Execute the Python script to create a CSV
+      - name: Generate CSV
+        run: python dumpcsv.py
+
+      # Step 5: Commit and push the generated CSV file if there are changes
+      - name: Commit and push changes
+        run:          git config --global user.name 'alirezax2'
+          git config --global user.email 'alireza.naziri@gmail.com'
+          git add -A
+          git commit -m "Automated CSV update" -a echo "No changes to commit"
+          git push
