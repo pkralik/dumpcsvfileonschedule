@@ -8,6 +8,8 @@ on:
 jobs:
   generate-and-commit-csv:
     runs-on: ubuntu-latest
+    permissions:                # Job-level permissions configuration starts here
+    contents: write           # 'write' access to repository contents
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
