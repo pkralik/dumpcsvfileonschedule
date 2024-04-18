@@ -2,8 +2,8 @@ name: Generate and Commit CSV
 
 on:
   schedule:
-    # Runs at every minute
-    - cron: '*/1 * * * *'
+    # Runs at every hour
+    - cron: '0 * * * *'
 
 jobs:
   generate-and-commit-csv:
